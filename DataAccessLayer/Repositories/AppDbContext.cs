@@ -3,6 +3,7 @@ public class AppDbContext : IdentityDbContext<AppUser>
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<SubCategory> SubCategories { get; set; }
     public DbSet<ProductCollection> ProductCollections { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Parameter> Parameters { get; set; }
