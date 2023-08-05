@@ -8,8 +8,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{B1DCA1ED-38FD-48E9-A479-FD131553E764}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{328DD25E-84A7-432D-AE71-7F842DBBD62D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B1DCA1ED-38FD-48E9-A479-FD131553E764} = {B1DCA1ED-38FD-48E9-A479-FD131553E764}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{549F9707-D5EC-4888-8911-42A45B2B85BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{549F9707-D5EC-4888-8911-42A45B2B85BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

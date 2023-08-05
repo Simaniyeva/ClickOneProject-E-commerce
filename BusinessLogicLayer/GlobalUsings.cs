@@ -12,5 +12,14 @@ global using Entities.DTOs.Parameter;
 global using Entities.DTOs.ProductParameter;
 global using Entities.DTOs.Account;
 global using System.Security.Claims;
+global using Entities.DTOs.Product;
+global using AutoMapper;
+global using Entities.Concrete;
+global using Microsoft.AspNetCore.Identity;
+global using BusinessLogicLayer.Services.Abstract;
+global using BusinessLogicLayer.Utilities.Constants;
+global using DataAccessLayer.Repositories;
+
+
 
 

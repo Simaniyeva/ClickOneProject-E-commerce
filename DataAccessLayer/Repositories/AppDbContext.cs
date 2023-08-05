@@ -1,4 +1,7 @@
-﻿namespace DataAccessLayer;
+﻿using Entities.Concrete;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
+namespace DataAccessLayer;
 public class AppDbContext : IdentityDbContext<AppUser>
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
