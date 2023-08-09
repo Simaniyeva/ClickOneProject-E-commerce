@@ -1,4 +1,4 @@
-﻿
+﻿using IResult = BusinessLogicLayer.Utilities.Results.IResult;
 namespace BusinessLogicLayer.Services.Abstract;
 
 public interface IProductParameterService

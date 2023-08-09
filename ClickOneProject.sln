@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClickOneProject", "ClickOneProject\ClickOneProject.csproj", "{2158F8EA-83C4-4473-A0CC-C76469A81E80}"
+	ProjectSection(ProjectDependencies) = postProject
+		{328DD25E-84A7-432D-AE71-7F842DBBD62D} = {328DD25E-84A7-432D-AE71-7F842DBBD62D}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{B1DCA1ED-38FD-48E9-A479-FD131553E764}"
 EndProject

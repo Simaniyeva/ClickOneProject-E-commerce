@@ -1,4 +1,6 @@
-﻿namespace BusinessLogicLayer.Services;
+﻿using IResult = BusinessLogicLayer.Utilities.Results.IResult;
+
+namespace BusinessLogicLayer.Services;
 
 public interface IGenericService<TGetDto, TPostDto, TUpdateDto>
     where TGetDto : class, IDto, new()

@@ -19,6 +19,14 @@ global using Microsoft.AspNetCore.Identity;
 global using BusinessLogicLayer.Services.Abstract;
 global using BusinessLogicLayer.Utilities.Constants;
 global using DataAccessLayer.Repositories;
+global using Microsoft.AspNetCore.Hosting;
+global using Microsoft.AspNetCore.Http;
+global using AutoMapper;
+global using BusinessLogicLayer.Services.Abstract;
+global using BusinessLogicLayer.Utilities.Constants;
+global using DataAccessLayer.Repositories;
+global using Entities.Concrete;
+
 
 
 

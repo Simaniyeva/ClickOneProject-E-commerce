@@ -1,4 +1,5 @@
 ﻿
+using IResult = BusinessLogicLayer.Utilities.Results.IResult;
 
 namespace BusinessLogicLayer.Services.Concrete;
 
@@ -16,32 +17,32 @@ public class SubCategoryManager : ISubCategoryService
 	#region Get Requests
 	public async Task<IDataResult<List<SubCategoryGetDto>>> GetAllAsync(bool getDeleted, params string[] includes)
 	{
-		List<SubCategory> categories = getDeleted
+		List<SubCategory> subCategories = getDeleted
 			? await _unitOfWork.SubCategoryRepository.GetAllAsync(includes: includes)
 			: await _unitOfWork.SubCategoryRepository.GetAllAsync(b => !b.isDeleted, includes);
-		if (categories is null)
+		if (subCategories is null)
 		{
 			return new ErrorDataResult<List<SubCategoryGetDto>>(Messages.NotFound(Messages.SubCategory));
 		}
-		return new SuccessDataResult<List<SubCategoryGetDto>>(_mapper.Map<List<SubCategoryGetDto>>(categories));
+		return new SuccessDataResult<List<SubCategoryGetDto>>(_mapper.Map<List<SubCategoryGetDto>>(subCategories));
 	}
 
 	public async Task<IDataResult<SubCategoryGetDto>> GetByIdAsync(int id, params string[] includes)
 	{
-		SubCategory SubCategory = await _unitOfWork.SubCategoryRepository.GetAsync(b => b.Id == id, includes);
-		if (SubCategory is null)
+		SubCategory subCategory = await _unitOfWork.SubCategoryRepository.GetAsync(b => b.Id == id, includes);
+		if (subCategory is null)
 		{
 			return new ErrorDataResult<SubCategoryGetDto>(Messages.NotFound(Messages.SubCategory));
 		}
-		return new SuccessDataResult<SubCategoryGetDto>(_mapper.Map<SubCategoryGetDto>(SubCategory));
+		return new SuccessDataResult<SubCategoryGetDto>(_mapper.Map<SubCategoryGetDto>(subCategory));
 	}
 	#endregion
 
 	#region Post Requests
 	public async Task<IResult> CreateAsync(SubCategoryPostDto dto)
 	{
-		SubCategory SubCategory = _mapper.Map<SubCategory>(dto);
-		await _unitOfWork.SubCategoryRepository.CreateAsync(SubCategory);
+		SubCategory subCategory = _mapper.Map<SubCategory>(dto);
+		await _unitOfWork.SubCategoryRepository.CreateAsync(subCategory);
 		int result = await _unitOfWork.SaveAsync();
 		if (result is 0)
 		{
@@ -55,9 +56,9 @@ public class SubCategoryManager : ISubCategoryService
 	#region Update Requests
 	public async Task<IResult> UpdateAsync(SubCategoryUpdateDto dto)
 	{
-		SubCategory SubCategory = await _unitOfWork.SubCategoryRepository.GetAsync(b => b.Id == dto.Id && !b.isDeleted);
-		SubCategory = _mapper.Map<SubCategory>(dto);
-		_unitOfWork.SubCategoryRepository.Update(SubCategory);
+		SubCategory subCategory = await _unitOfWork.SubCategoryRepository.GetAsync(b => b.Id == dto.Id && !b.isDeleted);
+		subCategory = _mapper.Map<SubCategory>(dto);
+		_unitOfWork.SubCategoryRepository.Update(subCategory);
 		int result = await _unitOfWork.SaveAsync();
 		if (result is 0)
 		{
@@ -67,9 +68,9 @@ public class SubCategoryManager : ISubCategoryService
 	}
 	public async Task<IResult> RecoverByIdAsync(int id)
 	{
-		SubCategory SubCategory = await _unitOfWork.SubCategoryRepository.GetAsync(b => b.Id == id && b.isDeleted);
-		SubCategory.isDeleted = false;
-		_unitOfWork.SubCategoryRepository.Update(SubCategory);
+		SubCategory subCategory = await _unitOfWork.SubCategoryRepository.GetAsync(b => b.Id == id && b.isDeleted);
+		subCategory.isDeleted = false;
+		_unitOfWork.SubCategoryRepository.Update(subCategory);
 		int result = await _unitOfWork.SaveAsync();
 		if (result is 0)
 		{
@@ -82,8 +83,8 @@ public class SubCategoryManager : ISubCategoryService
 	#region Delete Requests
 	public async Task<IResult> HardDeleteByIdAsync(int id)
 	{
-		SubCategory SubCategory = await _unitOfWork.SubCategoryRepository.GetAsync(b => b.Id == id && b.isDeleted);
-		_unitOfWork.SubCategoryRepository.Delete(SubCategory);
+		SubCategory subCategory = await _unitOfWork.SubCategoryRepository.GetAsync(b => b.Id == id && b.isDeleted);
+		_unitOfWork.SubCategoryRepository.Delete(subCategory);
 		int result = await _unitOfWork.SaveAsync();
 		if (result is 0)
 		{
@@ -93,9 +94,9 @@ public class SubCategoryManager : ISubCategoryService
 	}
 	public async Task<IResult> SoftDeleteByIdAsync(int id)
 	{
-		SubCategory SubCategory = await _unitOfWork.SubCategoryRepository.GetAsync(b => b.Id == id && !b.isDeleted);
-		SubCategory.isDeleted = true;
-		_unitOfWork.SubCategoryRepository.Update(SubCategory);
+		SubCategory subCategory = await _unitOfWork.SubCategoryRepository.GetAsync(b => b.Id == id && !b.isDeleted);
+		subCategory.isDeleted = true;
+		_unitOfWork.SubCategoryRepository.Update(subCategory);
 		int result = await _unitOfWork.SaveAsync();
 		if (result is 0)
 		{

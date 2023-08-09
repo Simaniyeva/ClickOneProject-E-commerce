@@ -1,8 +1,4 @@
-﻿using AutoMapper;
-using BusinessLogicLayer.Services.Abstract;
-using BusinessLogicLayer.Utilities.Constants;
-using DataAccessLayer.Repositories;
-using Entities.Concrete;
+﻿using IResult = BusinessLogicLayer.Utilities.Results.IResult;
 
 namespace BusinessLogicLayer.Services.Concrete;
 

@@ -1,4 +1,6 @@
-﻿namespace BusinessLogicLayer.Services.Abstract;
+﻿using IResult = BusinessLogicLayer.Utilities.Results.IResult;
+
+namespace BusinessLogicLayer.Services.Abstract;
 public interface IFavouriteService
 {
     #region Get Requests
