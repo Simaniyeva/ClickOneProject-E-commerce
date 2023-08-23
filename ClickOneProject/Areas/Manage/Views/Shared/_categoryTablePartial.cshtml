@@ -1,0 +1,64 @@
+﻿@model List<CategoryGetDto>
+
+<table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>SubCategory's count</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (CategoryGetDto category in Model)
+        {
+            <tr>
+                <td>@category.Name</td>
+                <td>@category.SubCategories.Count</td>
+                <td>
+
+                    @{
+                        if (category.isDeleted)
+                        {
+                            <div class="flex-shrink-0">
+                                <span class="badge rounded-pill badge-soft-danger font-size-12 fw-medium">InActive</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="flex-shrink-0">
+                                <span class="badge rounded-pill badge-soft-success font-size-12 fw-medium">Active</span>
+                            </div>
+                        }
+                    }
+
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <a type="button" class="btn btn-danger" asp-action="Get" asp-controller="Category" asp-route-id="@category.Id">Info <i class="mdi mdi-chevron-down"></i></a>
+
+                        @{
+
+                            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Info <i class="mdi mdi-chevron-down"></i></button>
+                            if (!category.isDeleted)
+                            {
+                                <div class="dropdown-menu dropdownmenu-danger">
+                                    <a class="dropdown-item" asp-action="Update" asp-controller="Category" asp-route-id="@category.Id">Edit</a>
+                                    <a class="dropdown-item" asp-action="Delete" asp-controller="Category" asp-route-id="@category.Id">Delete</a>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="dropdown-menu dropdownmenu-danger">
+                                    <a class="dropdown-item" asp-action="Recover" asp-controller="Category" asp-route-id="@category.Id">Recover</a>
+                                    <a class="dropdown-item" asp-action="HardDelete" asp-controller="Category" asp-route-id="@category.Id">Permamently Delete</a>
+                                </div>
+                            }
+                        }
+                    </div>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

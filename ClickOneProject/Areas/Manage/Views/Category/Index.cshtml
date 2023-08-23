@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+@model IDataResult<List<CategoryGetDto>>
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Categories</h4>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-success" asp-action="Create" asp-controller="Category">New Category</a>
+            </div>
+            <div class="card-body">
+                <partial name="_categoryTablePartial" model="Model.Data" />
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->

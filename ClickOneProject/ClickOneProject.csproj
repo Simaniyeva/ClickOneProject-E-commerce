@@ -16,10 +16,9 @@
 		<ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Areas\Manage\Controllers\" />
 	  <Folder Include="Areas\Manage\Data\" />
 	  <Folder Include="Areas\Manage\Models\" />
-	  <Folder Include="Areas\Manage\Views\" />
+	  <Folder Include="wwwroot\Manage\uploads\" />
 	</ItemGroup>
 
 </Project>

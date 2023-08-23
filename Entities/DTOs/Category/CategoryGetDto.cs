@@ -7,5 +7,5 @@ public class CategoryGetDto : IDto
     public bool isDeleted { get; set; }
 
     //Relations
-    public List<ProductGetDto> Products { get; set; }
+    public List<SubCategoryGetDto> SubCategories { get; set; }
 }

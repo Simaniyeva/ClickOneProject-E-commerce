@@ -1,0 +1,32 @@
+﻿<!doctype html>
+<html lang="en">
+<!-- Mirrored from themesbrand.com/minia/layouts/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Apr 2022 04:20:17 GMT -->
+<head>
+    <partial name="_headPartial" />
+    @RenderSection("Links",false)
+</head>
+<body>
+    <div id="layout-wrapper">
+        <header id="page-topbar">
+            <partial name="_headerPartial" />
+        </header>
+        <partial name="_leftSidebarPartial" />
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+                    @RenderBody()
+                    <partial name="_footerPartial" />
+                </div>
+            </div>
+        </div>
+    </div>
+        <partial name="_leftSidebarPartial" />
+
+    <div class="rightbar-overlay"></div>
+
+    <partial name="_scriptsPartial" />
+    @RenderSection("Scripts",false)
+
+
+</body>
+</html>
