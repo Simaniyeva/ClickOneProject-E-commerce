@@ -1,24 +1,24 @@
-﻿@model List<CategoryGetDto>
+﻿@model List<SubCategoryGetDto>
 
 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100 text-center">
     <thead>
         <tr>
             <th>Name</th>
-            <th>SubCategory's count</th>
+            <th>Product's count</th>
             <th>Status</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (CategoryGetDto category in Model)
+        @foreach (SubCategoryGetDto subcategory in Model)
         {
             <tr>
-                <td>@category.Name</td>
-                <td>@category.SubCategories.Count</td>
+                <td>@subcategory.Name</td>
+                <td>@subcategory.Products.Count</td>
                 <td>
 
                     @{
-                        if (category.isDeleted)
+                        if (subcategory.isDeleted)
                         {
                             <div class="flex-shrink-0">
                                 <span class="badge rounded-pill badge-soft-danger font-size-12 fw-medium">InActive</span>
@@ -35,12 +35,8 @@
                 </td>
                 <td>
                     <div class="btn-group">
-
-
-
-
                         @{
-                            <a type="button" href="javascript:0"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="view-detail  btn-outline-success text-center " id="infoBtn" data-id="@category.Id">
+                            <a type="button" href="javascript:0"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="view-detail  btn-outline-success text-center " id="infoBtn" data-id="@subcategory.Id">
                                 <i class="bx bx-show-alt"></i>
                             </a>
 
@@ -48,27 +44,23 @@
 
                                 <i class="mdi mdi-chevron-down"></i>
                             </button>
-                            if (!category.isDeleted)
+                            if (!subcategory.isDeleted)
                             {
                                 <div class="dropdown-menu dropdownmenu-danger">
-                                    <a class="dropdown-item" asp-action="Update" asp-controller="Category" asp-route-id="@category.Id">Edit</a>
-                                    <a class="dropdown-item" asp-action="Delete" asp-controller="Category" asp-route-id="@category.Id">Delete</a>
+                                    <a class="dropdown-item" asp-action="Update" asp-controller="Subcategory" asp-route-id="@subcategory.Id">Edit</a>
+                                    <a class="dropdown-item" asp-action="Delete" asp-controller="Subcategory" asp-route-id="@subcategory.Id">Delete</a>
                                 </div>
                             }
                             else
                             {
                                 <div class="dropdown-menu dropdownmenu-danger">
-                                    <a class="dropdown-item" asp-action="Recover" asp-controller="Category" asp-route-id="@category.Id">Recover</a>
-                                    <a class="dropdown-item" asp-action="HardDelete" asp-controller="Category" asp-route-id="@category.Id">Permamently Delete</a>
+                                    <a class="dropdown-item" asp-action="Recover" asp-controller="Subcategory" asp-route-id="@subcategory.Id">Recover</a>
+                                    <a class="dropdown-item" asp-action="HardDelete" asp-controller="Subcategory" asp-route-id="@subcategory.Id">Permamently Delete</a>
                                 </div>
                             }
                         }
-
-
                     </div>
                 </td>
-
-
             </tr>
         }
     </tbody>

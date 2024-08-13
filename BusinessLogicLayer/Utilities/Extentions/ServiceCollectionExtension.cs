@@ -1,9 +1,6 @@
 ﻿
 using BusinessLogicLayer.Services.Concrete;
 using DataAccessLayer;
-using DataAccessLayer.Repositories;
-using Entities.Concrete;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +15,7 @@ public static class ServiceCollectionExtension
         services.AddControllersWithViews();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<ICategoryService, CategoryManager>();
+        services.AddScoped<ISubCategoryService, SubCategoryManager>();
 
         services.AddAuthentication();
         services.AddDbContext<AppDbContext>(opt =>

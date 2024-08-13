@@ -1,29 +1,27 @@
-﻿
-using IResult = BusinessLogicLayer.Utilities.Results.IResult;
+﻿using Entities.DTOs.Color;
 
 namespace ClickOneProject.Areas.Manage.Controllers;
-
 [Area("Manage")]
-public class CategoryController : Controller
+public class ColorController : Controller
 {
-    private readonly ICategoryService _categoryService;
+    private readonly IColorService _colorService;
     private readonly IMapper _mapper;
 
-    public CategoryController(ICategoryService categoryService, IMapper mapper)
+    public ColorController(IColorService colorService, IMapper mapper)
     {
-        _categoryService = categoryService;
+        _colorService = colorService;
         _mapper = mapper;
     }
 
     public async Task<IActionResult> Index()
     {
-        IDataResult<List<CategoryGetDto>> result = await _categoryService.GetAllAsync(true);
+        IDataResult<List<ColorGetDto>> result = await _colorService.GetAllAsync(true);
         return View(result);
     }
 
     public async Task<IActionResult> Get(int id)
     {
-        IDataResult<CategoryGetDto> result = await _categoryService.GetByIdAsync(id);
+        IDataResult<ColorGetDto> result = await _colorService.GetByIdAsync(id);
         return View(result);
     }
     [HttpGet]
@@ -33,54 +31,53 @@ public class CategoryController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(CategoryPostDto dto)
+    public async Task<IActionResult> Create(ColorPostDto dto)
     {
         if (!ModelState.IsValid)
         {
             return View(dto);
         }
-        IResult result = await _categoryService.CreateAsync(dto);
+        BusinessLogicLayer.Utilities.Results.IResult result = await _colorService.CreateAsync(dto);
         return RedirectToAction(nameof(Index));
     }
 
     [HttpGet]
     public async Task<IActionResult> Update(int id)
     {
-        IDataResult<CategoryGetDto> result = await _categoryService.GetByIdAsync(id);
-        return View(_mapper.Map<CategoryUpdateDto>(result.Data));
+        IDataResult<ColorGetDto> result = await _colorService.GetByIdAsync(id);
+        return View(_mapper.Map<ColorUpdateDto>(result.Data));
     }
     [HttpPost]
-    public async Task<IActionResult> Update(CategoryUpdateDto dto)
+    public async Task<IActionResult> Update(ColorUpdateDto dto)
     {
         if (!ModelState.IsValid)
         {
             return View(dto);
         }
-        await _categoryService.UpdateAsync(dto);
+        await _colorService.UpdateAsync(dto);
         return RedirectToAction(nameof(Index));
     }
 
     public async Task<IActionResult> Delete(int id)
     {
-        CategoryGetDto result = (await _categoryService.GetByIdAsync(id)).Data;
+        ColorGetDto result = (await _colorService.GetByIdAsync(id)).Data;
         if (result == null) { return RedirectToAction(nameof(Index)); }
-        await _categoryService.SoftDeleteByIdAsync(id);
+        await _colorService.SoftDeleteByIdAsync(id);
         return RedirectToAction(nameof(Index));
     }
     public async Task<IActionResult> Recover(int id)
     {
-        CategoryGetDto result = (await _categoryService.GetByIdAsync(id)).Data;
+        ColorGetDto result = (await _colorService.GetByIdAsync(id)).Data;
         if (result == null) { return RedirectToAction(nameof(Index)); }
-        await _categoryService.RecoverByIdAsync(id);
+        await _colorService.RecoverByIdAsync(id);
         return RedirectToAction(nameof(Index));
     }
     public async Task<IActionResult> HardDelete(int id)
     {
-        CategoryGetDto result = (await _categoryService.GetByIdAsync(id)).Data;
+        ColorGetDto result = (await _colorService.GetByIdAsync(id)).Data;
         if (result == null) { return RedirectToAction(nameof(Index)); }
-        await _categoryService.HardDeleteByIdAsync(id);
+        await _colorService.HardDeleteByIdAsync(id);
         return RedirectToAction(nameof(Index));
     }
 
 }
-

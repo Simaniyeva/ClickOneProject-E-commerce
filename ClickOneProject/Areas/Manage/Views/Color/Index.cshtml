@@ -2,12 +2,12 @@
     ViewData["Title"] = "Index";
 }
 
-@model IDataResult<List<CategoryGetDto>>
+@model IDataResult<List<ColorGetDto>>
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0 font-size-18">Categories</h4>
-            <p>Add, edit or delete a category</p>
+            <h4 class="mb-sm-0 font-size-18">Colors</h4>
+            <p>Add, edit or delete a Color</p>
         </div>
     </div>
 </div>
@@ -16,7 +16,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <a class="btn btn-success" asp-action="Create" asp-controller="Category">New Category</a>
+                <a class="btn btn-success" asp-action="Create" asp-controller="Color">New Color</a>
             </div>
             <div class="card-body">
                 <partial name="_categoryTablePartial" model="Model.Data" />
@@ -30,26 +30,25 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Category</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Color</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-          
             </div>
         </div>
     </div>
 </div>
-@section Scripts{
-<script>
-    $(".table").on("click", ".infoBtn", function () {
-        var id = $(this).data('id');
-        $.ajax({
-            url: "@Url.Action("Get", "Category")",
-            data: { id: id },
-            success: function (data) {
-                $("#staticBackdrop .modal-dialog .modal-body").html(data);
-            }
+@section Scripts {
+    <script>
+        $(".table").on("click", ".infoBtn", function () {
+            var id = $(this).data('id');
+            $.ajax({
+                url: "@Url.Action("Get", "Color")",
+                data: { id: id },
+                success: function (data) {
+                    $("#staticBackdrop .modal-dialog .modal-body").html(data);
+                }
+            });
         });
-    });
-</script>
+    </script>
 }
